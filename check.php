@@ -29,8 +29,14 @@ function validate($input,$flag){
         if(strlen($input) ){
             $status = false; 
         }
+              
         break;
-  
+   case 4: 
+        # code ... 
+        if(!filter_var($input,FILTER_VALIDATE_INT)){
+            $status = false;
+        }
+        break;
 
        
      
