@@ -26,8 +26,9 @@ require 'conn.php';
 if($_SERVER['REQUEST_METHOD'] == "POST"){
 
 
-$name     = Clean($_POST['name']);
-$email    = Clean($_POST['email']);
+$titel    = Clean($_POST['titel']);
+$content   = Clean($_POST['content']);
+$image   = Clean($_POST['image']);
 
 $errors = [];
 
@@ -60,7 +61,7 @@ if(!validate($image,1)){
     // db .......... 
 
 
-     $sql = "update users set name = '$name' , email = '$email' where id = $id";
+     $sql = "update users set titel = '$titel' , content = '$content',image = '$image' where id = $id";
      $op  = mysqli_query($con,$sql);
 
      if($op){
@@ -105,14 +106,14 @@ if(!validate($image,1)){
  
 
  <div class="form-group">
-   <label for="exampleInputName">Name</label>
-   <input type="text" class="form-control" id="exampleInputName"  name="name"  value="<?php echo $data['name'];?>" aria-describedby="" placeholder="Enter Name">
+   <label for="exampleInputtitel">titel</label>
+   <input type="text" class="form-control" id="exampleInputtitel"  name="name"  value="<?php echo $data['titel'];?>" aria-describedby="" placeholder="Enter titel">
  </div>
 
 
  <div class="form-group">
    <label for="exampleInputEmail">Email address</label>
-   <input type="email"   class="form-control" id="exampleInputEmail1" name="email" value="<?php echo $data['email'];?>"  aria-describedby="emailHelp" placeholder="Enter email">
+   <input type="email"   class="form-control" id="exampleInputEmail1" name="content" value="<?php echo $data['content'];?>"  aria-describedby="content" placeholder="Enter content">
  </div>
 
 
