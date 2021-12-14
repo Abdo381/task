@@ -1,7 +1,41 @@
 <?php
 require 'check.php';
 require 'conn.php';
+if(!empty($_FILES['image']['name'])){
 
+           $tmpPath    =  $_FILES['image']['tmp_name'];
+           $imageName  =  $_FILES['image']['name'];
+           $imageSize  =  $_FILES['image']['size'];
+           $imageType  =  $_FILES['image']['type'];
+       
+            // name.ex
+
+           $exArray   = explode('.',$imageName);
+           $extension = end($exArray);
+
+           $FinalName = rand().time().'.'.$extension;
+
+           $allowedExtension = ["png",'jpg'];
+
+            if(in_array($extension,$allowedExtension)){
+                // code .... 
+
+               $desPath = './uploads/'.$FinalName;
+
+                if(move_uploaded_file($tmpPath,$desPath)){
+                    echo 'Image Uploaded';
+                }else{
+                    echo 'Error In Uploading file';
+                }
+
+
+            }else{
+                echo 'Not Allowed Extension .... ';
+            }
+
+        }else{
+            echo 'Image Field Required';
+        }
 if($_SERVER['REQUEST_METHOD'] == "POST"){
 
 // CODE ...... 
